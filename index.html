@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Napoli's Italian Restaurant – Tahlequah, OK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Napoli's Italian Restaurant in Tahlequah, OK – authentic Italian dishes, warm atmosphere, and friendly service. Dine in or call (918) 207-0870." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-primary: #8b1e22;
+      --color-secondary: #1f3b2c;
+      --color-accent: #f4ebdf;
+      --color-dark: #222222;
+      --color-muted: #777777;
+      --max-width: 1100px;
+      --radius-card: 18px;
+      --shadow-soft: 0 18px 35px rgba(0, 0, 0, 0.16);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Open Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--color-dark);
+      background: #f8f5f1;
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Header / Hero */
+    header {
+      position: relative;
+      color: #ffffff;
+      min-height: 80vh;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .hero-background {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(120deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.3)),
+        url("https://i.postimg.cc/Vz6hKzsM/image.png");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.1);
+      z-index: -2;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.18), transparent 55%);
+      z-index: -1;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 3rem;
+      align-items: center;
+      padding: 1.5rem 0 4rem;
+    }
+
+    .hero-logo-wrap img {
+      max-width: 300px;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 0.75rem 1rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-tagline {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #fbe6c9;
+    }
+
+    .hero-title {
+      margin-top: 0.75rem;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.3rem, 5vw, 3.1rem);
+      font-weight: 700;
+    }
+
+    .hero-subtitle {
+      margin-top: 0.85rem;
+      font-size: 1rem;
+      max-width: 30rem;
+      color: #f9f1e6;
+    }
+
+    .hero-meta {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      opacity: 0.9;
+    }
+
+    .hero-meta .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f5c56c;
+    }
+
+    .hero-cta {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.7rem 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #b72a2e, #7f181b);
+      border-color: #f7d2a0;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55);
+    }
+
+    .btn-outline {
+      background: rgba(10, 10, 10, 0.52);
+      color: #f9f1e6;
+      border-color: rgba(249, 241, 230, 0.6);
+    }
+
+    .btn-outline:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #f9f1e6;
+      border-color: transparent;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      padding-inline: 0;
+    }
+
+    .hero-card {
+      background: rgba(18, 18, 18, 0.86);
+      padding: 1.4rem 1.6rem;
+      border-radius: 20px;
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-card-heading {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #fbe6c9;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-rating-stars {
+      font-size: 1.1rem;
+      color: #f6c453;
+    }
+
+    .hero-rating-score {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .hero-review {
+      font-size: 0.92rem;
+      color: #f4e6d7;
+      margin-bottom: 0.6rem;
+      font-style: italic;
+    }
+
+    .hero-review small {
+      display: block;
+      margin-top: 0.25rem;
+      opacity: 0.8;
+      font-style: normal;
+    }
+
+    .hero-card-divider {
+      margin: 0.9rem 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    }
+
+    .hero-hours {
+      font-size: 0.9rem;
+      color: #f8e7d5;
+    }
+
+    .hero-hours span {
+      display: block;
+      opacity: 0.9;
+    }
+
+    .badge-soft {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.78rem;
+      border-radius: 99px;
+      border: 1px solid rgba(250, 220, 189, 0.55);
+      background: rgba(248, 206, 166, 0.12);
+      color: #f8e2c2;
+      margin-top: 0.5rem;
+    }
+
+    .badge-soft::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #f6c453;
+      box-shadow: 0 0 0 4px rgba(246, 196, 83, 0.4);
+    }
+
+    section { padding: 3.5rem 0; }
+    section:nth-of-type(even) { background: #f3ece3; }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-heading h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.9rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-heading p {
+      color: var(--color-muted);
+      font-size: 0.95rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.75rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+      font-size: 0.98rem;
+    }
+
+    .about-highlight {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 0.75rem;
+    }
+
+    .about-chip {
+      font-size: 0.85rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .about-chip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-primary);
+    }
+
+    .about-image-card {
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      background: transparent;
+    }
+
+    .about-image-card img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .menu-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.8rem;
+    }
+
+    .menu-card {
+      background: #ffffff;
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-card-image {
+      position: relative;
+      overflow: hidden;
+      max-height: 190px;
+      background: #f8f5f1;
+    }
+
+    .menu-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .menu-card:hover .menu-card-image img {
+      transform: scale(1.06);
+    }
+
+    .menu-card-body {
+      padding: 1rem 1.1rem 1.3rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .menu-card-title {
+      font-weight: 700;
+      font-family: "Playfair Display", serif;
+      font-size: 1.05rem;
+    }
+
+    .menu-card-tagline {
+      font-size: 0.86rem;
+      color: var(--color-muted);
+    }
+
+    .menu-card-note {
+      margin-top: 0.25rem;
+      font-size: 0.86rem;
+      color: var(--color-secondary);
+      font-weight: 600;
+    }
+
+    .menu-download {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .menu-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.75rem;
+    }
+
+    .menu-links a {
+      font-size: 0.9rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: #ffffff;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .menu-links a:hover {
+      background: #f5ebe0;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .menu-images {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .menu-thumb {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .menu-thumb img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .menu-thumb:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 26px rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      background: transparent;
+      position: relative;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-item figcaption {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 0.6rem 0.9rem;
+      background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.74));
+      color: #fff;
+      font-size: 0.85rem;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .reviews-summary {
+      background: #ffffff;
+      border-radius: var(--radius-card);
+      padding: 1.6rem 1.4rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .reviews-summary h3 {
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .reviews-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .reviews-rating-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .reviews-rating-stars {
+      font-size: 1.3rem;
+      color: #f6c453;
+    }
+
+    .reviews-rating-label {
+      font-size: 0.9rem;
+      color: var(--color-muted);
+    }
+
+    .reviews-quote {
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px dashed rgba(0, 0, 0, 0.08);
+      font-size: 0.94rem;
+      font-style: italic;
+    }
+
+    .reviews-quote + .reviews-quote {
+      margin-top: 0.75rem;
+    }
+
+    .reviews-quote small {
+      display: block;
+      margin-top: 0.3rem;
+      font-style: normal;
+      font-weight: 600;
+      color: var(--color-secondary);
+    }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .visit-card {
+      background: #ffffff;
+      border-radius: var(--radius-card);
+      padding: 1.6rem 1.6rem 1.3rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .visit-card h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .visit-row {
+      display: flex;
+      gap: 0.9rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.95rem;
+    }
+
+    .visit-label {
+      width: 90px;
+      font-weight: 600;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+    }
+
+    .visit-hours-list span {
+      display: block;
+      font-size: 0.93rem;
+    }
+
+    .visit-hours-note {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      margin-top: 0.4rem;
+    }
+
+    .visit-actions {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .map-embed {
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      min-height: 260px;
+      background: #ddd;
+    }
+
+    .map-embed iframe {
+      border: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2.2rem 0 2.5rem;
+      background: #151515;
+      color: #e9e2d5;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .footer-logo {
+      max-width: 140px;
+      opacity: 0.9;
+    }
+
+    .footer-hours {
+      font-size: 0.85rem;
+      color: #cfc4b4;
+      line-height: 1.4;
+    }
+
+    .footer-hours strong {
+      font-weight: 600;
+      color: #f3e4cf;
+    }
+
+    .footer-bottom {
+      font-size: 0.8rem;
+      color: #b9afa0;
+    }
+
+    .footer-bottom a {
+      color: #f6c453;
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      text-decoration: underline;
+    }
+
+    footer span { opacity: 0.9; }
+
+    /* ===== TABLET / SMALL LAPTOP ===== */
+    @media (max-width: 900px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      header {
+        min-height: auto;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+        padding-top: 4rem;
+        padding-bottom: 2.75rem;
+      }
+
+      .hero-card {
+        max-width: 420px;
+        margin: 0 auto 0.5rem;
+      }
+
+      .hero-logo-wrap {
+        text-align: center;
+      }
+
+      .hero-logo-wrap img {
+        margin: 0 auto;
+        max-width: 230px;
+      }
+
+      .hero-tagline,
+      .hero-title,
+      .hero-subtitle,
+      .hero-meta,
+      .hero-cta {
+        text-align: center;
+      }
+
+      .hero-meta {
+        justify-content: center;
+      }
+
+      .hero-cta {
+        justify-content: center;
+      }
+
+      .menu-feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.2rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .about-grid,
+      .menu-download,
+      .reviews-grid,
+      .visit-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-image-card,
+      .map-embed {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+    }
+
+    /* ===== PHONE ===== */
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.95rem;
+      }
+
+      section {
+        padding: 2.5rem 0;
+      }
+
+      .container {
+        padding: 0 0.9rem;
+      }
+
+      /* move background image slightly to the right on mobile */
+      .hero-background {
+        background-position: 65% center;
+      }
+
+      .hero-title {
+        font-size: 1.9rem;
+      }
+
+      .hero-subtitle {
+        max-width: none;
+        font-size: 0.96rem;
+      }
+
+      .hero-meta {
+        gap: 0.4rem 0.9rem;
+        font-size: 0.88rem;
+      }
+
+      .hero-meta span {
+        justify-content: center;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.55rem;
+        margin-top: 1.4rem;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.65rem 1.2rem;
+        font-size: 0.86rem;
+      }
+
+      .hero-card {
+        padding: 1.05rem 1.1rem;
+        border-radius: 16px;
+      }
+
+      .section-heading h2 {
+        font-size: 1.6rem;
+      }
+
+      .section-heading p {
+        font-size: 0.9rem;
+      }
+
+      .menu-feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1.3rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-images {
+        grid-template-columns: 1fr;
+      }
+
+      .visit-row {
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      .visit-label {
+        width: auto;
+      }
+
+      .map-embed {
+        min-height: 220px;
+      }
+
+      .footer-hours {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO / HEADER -->
+  <header>
+    <div class="hero-background"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-logo-wrap">
+            <img src="https://i.postimg.cc/yB4w7qnH/Napolis-Logo-%284%29.png" alt="Napoli's Italian Restaurant logo" />
+          </div>
+          <div class="hero-tagline">Napoli's Italian Restaurant · Tahlequah, OK</div>
+          <h1 class="hero-title">Authentic Italian comfort, right on Muskogee Avenue.</h1>
+          <p class="hero-subtitle">
+            Handcrafted pastas, warm bread, and classic Italian favorites served in a cozy, family-friendly atmosphere in the heart of Tahlequah.
+          </p>
+
+          <div class="hero-meta">
+            <span><span class="dot"></span>901 Muskogee Ave, Tahlequah, OK 74464</span>
+            <span><span class="dot"></span>(918) 207-0870</span>
+            <span><span class="dot"></span>Google rating: 4.7 / 5</span>
+          </div>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="tel:+19182070870">Call to Order</a>
+
+            <a
+              class="btn btn-outline"
+              href="https://sites.google.com/view/napolis-menu/menu"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Menu
+            </a>
+
+            <a
+              class="btn btn-ghost"
+              href="https://www.google.com/maps/search/?api=1&query=Napoli%27s+Italian+Restaurant+901+Muskogee+Ave+Tahlequah+OK+74464"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Get Directions
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-card-heading">What guests are saying</div>
+          <div class="hero-rating">
+            <div class="hero-rating-stars">★★★★★</div>
+            <div class="hero-rating-score">4.7 / 5 on Google</div>
+          </div>
+
+          <p class="hero-review">
+            “Fantastic place, super friendly staff, great service. The food was wonderful, their bread is to die for. I can't wait to go back.”
+            <small>– Jason Winkler</small>
+          </p>
+
+          <p class="hero-review">
+            “Might just be the best Italian restaurant I've ever been to!”
+            <small>– Ralph Edge</small>
+          </p>
+
+          <div class="hero-card-divider"></div>
+
+          <div class="hero-hours">
+            <span><strong>Monday:</strong> Closed</span>
+            <span><strong>Tuesday – Saturday:</strong> 11:00 AM – 9:00 PM</span>
+            <span><strong>Sunday:</strong> Call for current hours</span>
+          </div>
+
+          <div class="badge-soft">Family-owned · Dine-in · Takeout</div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Welcome to Napoli's</h2>
+        <p>Classic Italian dishes, made with care, served with a smile.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            At Napoli's Italian Restaurant, you’ll find generous portions, comforting recipes, and a team that treats you like family. From
+            creamy pastas and rich tomato sauces to fresh-baked bread and indulgent desserts, every plate is prepared to be savored.
+          </p>
+          <p>
+            Whether you’re celebrating a special occasion or just craving a cozy dinner out, our dining room offers a warm, welcoming space
+            to relax, connect, and enjoy a true taste of Italy right here in Tahlequah.
+          </p>
+
+          <div class="about-highlight">
+            <div class="about-chip">
+              <span class="about-chip-dot"></span> House-made sauces & pastas
+            </div>
+            <div class="about-chip">
+              <span class="about-chip-dot"></span> Friendly, attentive service
+            </div>
+            <div class="about-chip">
+              <span class="about-chip-dot"></span> Perfect for date nights & family dinners
+            </div>
+          </div>
+        </div>
+
+        <div class="about-image-card">
+          <img src="https://i.postimg.cc/Vz6hKzsM/image.png" alt="Exterior of Napoli's Italian Restaurant in Tahlequah, OK" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU HIGHLIGHTS -->
+  <section id="menu">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Guest Favorites</h2>
+        <p>Just a few of the dishes our guests keep coming back for.</p>
+      </div>
+
+      <div class="menu-feature-grid">
+        <!-- Tortellini -->
+        <article class="menu-card">
+          <div class="menu-card-image">
+            <img src="https://i.postimg.cc/W2S6Ck9D/image.png" alt="Tortellini Alapana at Napoli's Italian Restaurant" />
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-title">Tortellini Alapana</div>
+            <div class="menu-card-tagline">
+              Cheese-filled tortellini in a rich, creamy sauce, finished with Italian herbs.
+            </div>
+            <div class="menu-card-note">
+              Comforting, hearty, and perfect with a side of warm bread.
+            </div>
+          </div>
+        </article>
+
+        <!-- Spaghetti -->
+        <article class="menu-card">
+          <div class="menu-card-image">
+            <img src="https://i.postimg.cc/zDz73ky5/image.png" alt="Spaghetti with marinara at Napoli's Italian Restaurant" />
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-title">Classic Spaghetti</div>
+            <div class="menu-card-tagline">
+              Traditional spaghetti tossed in a savory house marinara, topped with Parmesan.
+            </div>
+            <div class="menu-card-note">
+              Simple, timeless, and full of flavor.
+            </div>
+          </div>
+        </article>
+
+        <!-- Tiramisu -->
+        <article class="menu-card">
+          <div class="menu-card-image">
+            <img src="https://i.postimg.cc/wH1c43DQ/image.png" alt="Tiramisu dessert at Napoli's Italian Restaurant" />
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-card-title">Tiramisu</div>
+            <div class="menu-card-tagline">
+              Layers of espresso-soaked ladyfingers and mascarpone cream, dusted with cocoa.
+            </div>
+            <div class="menu-card-note">
+              The perfect sweet ending to your meal.
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="menu-download">
+        <div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; margin-bottom: 0.35rem;">
+            Explore the full menu
+          </h3>
+          <p style="font-size: 0.95rem; color: var(--color-muted);">
+            From baked pastas and chicken specialties to seafood, pizzas, and desserts, Napoli’s menu has something for everyone.
+            Tap below to view the full menu on our menu page.
+          </p>
+
+          <div class="menu-links">
+            <a href="https://sites.google.com/view/napolis-menu/menu" target="_blank" rel="noopener noreferrer">
+              View Full Menu
+            </a>
+          </div>
+        </div>
+
+        <div class="menu-images">
+          <a class="menu-thumb" href="https://sites.google.com/view/napolis-menu/menu" target="_blank" rel="noopener noreferrer">
+            <img src="https://i.postimg.cc/0KDrF6Gg/image.png" alt="Napoli's Italian Restaurant menu front" />
+          </a>
+          <a class="menu-thumb" href="https://sites.google.com/view/napolis-menu/menu" target="_blank" rel="noopener noreferrer">
+            <img src="https://i.postimg.cc/4n9Km0DW/image.png" alt="Napoli's Italian Restaurant menu back" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-heading">
+        <h2>A Taste of Napoli's</h2>
+        <p>Warm plates, cozy lighting, and that fresh-from-the-oven aroma.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="gallery-item">
+          <img src="https://i.postimg.cc/W2S6Ck9D/image.png" alt="Tortellini Alapana dish at Napoli's" />
+          <figcaption>Tortellini Alapana</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="https://i.postimg.cc/zDz73ky5/image.png" alt="Spaghetti with marinara sauce at Napoli's" />
+          <figcaption>Classic Spaghetti</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="https://i.postimg.cc/wH1c43DQ/image.png" alt="Tiramisu dessert at Napoli's" />
+          <figcaption>House Tiramisu</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="https://i.postimg.cc/dDtHF8gq/image.png" alt="Napoli's sign at night" />
+          <figcaption>Napoli's sign glowing at night</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="https://i.postimg.cc/KkYn65jV/image.png" alt="Fresh bread at Napoli's" />
+          <figcaption>Fresh, warm bread</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="https://i.postimg.cc/xqcvggW4/image.png" alt="Chicken Parmesan at Napoli's" />
+          <figcaption>Chicken Parmesan</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="https://i.postimg.cc/QFLJF5Y1/image.png" alt="Chicken Tortellini at Napoli's" />
+          <figcaption>Chicken Tortellini</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Guests Love Napoli's</h2>
+        <p>See why locals and visitors keep coming back.</p>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="reviews-summary">
+          <h3>Google Reviews</h3>
+          <div class="reviews-rating">
+            <div class="reviews-rating-number">4.7</div>
+            <div>
+              <div class="reviews-rating-stars">★★★★★</div>
+              <div class="reviews-rating-label">Average rating from happy guests</div>
+            </div>
+          </div>
+          <p style="font-size: 0.92rem; color: var(--color-muted);">
+            Napoli’s is known for its generous portions, friendly staff, and cozy atmosphere.
+            From the first basket of bread to the last bite of dessert, it’s a local favorite for Italian comfort food.
+          </p>
+        </div>
+
+        <div>
+          <div class="reviews-quote">
+            “Fantastic place, super friendly staff, great service. The food was wonderful, their bread is to die for. I can't wait to go back.”
+            <small>– Jason Winkler</small>
+          </div>
+          <div class="reviews-quote">
+            “Might just be the best Italian restaurant I've ever been to!”
+            <small>– Ralph Edge</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT / CONTACT -->
+  <section id="visit">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Visit Napoli's</h2>
+        <p>Located right on Muskogee Avenue in Tahlequah, Oklahoma.</p>
+      </div>
+
+      <div class="visit-grid">
+        <div class="visit-card">
+          <h3>Hours & Contact</h3>
+
+          <div class="visit-row">
+            <div class="visit-label">Address</div>
+            <div>901 Muskogee Ave<br />Tahlequah, OK 74464</div>
+          </div>
+
+          <div class="visit-row">
+            <div class="visit-label">Phone</div>
+            <div><a href="tel:+19182070870">(918) 207-0870</a></div>
+          </div>
+
+          <div class="visit-row">
+            <div class="visit-label">Hours</div>
+            <div class="visit-hours-list">
+              <span><strong>Monday:</strong> Closed</span>
+              <span><strong>Tuesday – Saturday:</strong> 11:00 AM – 9:00 PM</span>
+              <span><strong>Sunday:</strong> Call for current hours</span>
+              <div class="visit-hours-note">
+                Hours are subject to change on holidays. Please call ahead to confirm.
+              </div>
+            </div>
+          </div>
+
+          <div class="visit-actions">
+            <a class="btn btn-primary" href="tel:+19182070870">Call Now</a>
+            <a
+              class="btn btn-outline"
+              href="https://www.google.com/maps/search/?api=1&query=Napoli%27s+Italian+Restaurant+901+Muskogee+Ave+Tahlequah+OK+74464"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open in Maps
+            </a>
+          </div>
+        </div>
+
+        <div class="map-embed">
+          <iframe
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Napoli%27s+Italian+Restaurant+901+Muskogee+Ave+Tahlequah+OK+74464&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <!-- Small logo -->
+        <img
+          class="footer-logo"
+          src="https://i.postimg.cc/yB4w7qnH/Napolis-Logo-%284%29.png"
+          alt="Napoli's Italian Restaurant logo"
+        />
+
+        <!-- Hours -->
+        <div class="footer-hours">
+          <div><strong>Hours:</strong></div>
+          <div>Monday: Closed</div>
+          <div>Tuesday – Saturday: 11:00 AM – 9:00 PM</div>
+          <div>Sunday: Call for current hours</div>
+        </div>
+
+        <!-- Existing text + credit -->
+        <div class="footer-bottom">
+          © <span id="year"></span> Napoli's Italian Restaurant · Tahlequah, Oklahoma
+          <br />
+          Made by <strong>LJ Web Development</strong> ·
+          <a href="https://ljwebdevelopment.com" target="_blank" rel="noopener noreferrer">
+            ljwebdevelopment.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
