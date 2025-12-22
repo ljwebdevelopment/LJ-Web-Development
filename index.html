@@ -33,6 +33,7 @@
       <button class="navLink" type="button" data-action="scroll" data-target="services">Services</button>
       <button class="navLink" type="button" data-action="scroll" data-target="pricing">Pricing</button>
       <button class="navLink" type="button" data-action="scroll" data-target="addons">Add-ons</button>
+      <button class="navLink" type="button" data-action="scroll" data-target="portfolio">Portfolio</button>
       <button class="navLink" type="button" data-action="scroll" data-target="local">Local</button>
       <button class="btn btnSoft" type="button" data-action="scroll" data-target="contact">Get a Quote</button>
     </nav>
@@ -170,6 +171,7 @@
           <p class="small">After launch, changes and updates are handled through a support plan.</p>
         </div>
 
+        <!-- SUPPORT PLANS (single section: cards + explained bullets under each) -->
         <div class="card pad">
           <h3>Support Plans</h3>
           <p class="small">Choose a plan — it opens an email that’s already written.</p>
@@ -179,7 +181,18 @@
               <div><strong>Basic</strong><div class="small">Minor updates</div></div>
               <div class="price">$30 <small>/mo</small></div>
             </div>
-            <button class="btn btnSoft" type="button" data-action="plan" data-plan="Basic Support ($30/mo)">Choose Basic</button>
+
+            <ul class="list" style="margin-top:12px;">
+              <li>Text edits (hours, pricing, service descriptions)</li>
+              <li>Link fixes (call/email/maps buttons)</li>
+              <li>Swap or update existing images</li>
+              <li>Small layout adjustments to keep things clean</li>
+              <li>Basic troubleshooting if something looks off</li>
+            </ul>
+
+            <div class="row">
+              <button class="btn btnSoft" type="button" data-action="plan" data-plan="Basic Support ($30/mo)">Choose Basic</button>
+            </div>
           </div>
 
           <div class="miniCard">
@@ -187,7 +200,18 @@
               <div><strong>Standard</strong><div class="small">Regular promos</div></div>
               <div class="price">$65 <small>/mo</small></div>
             </div>
-            <button class="btn btnSoft" type="button" data-action="plan" data-plan="Standard Support ($65/mo)">Choose Standard</button>
+
+            <ul class="list" style="margin-top:12px;">
+              <li>Everything in Basic</li>
+              <li>Promo updates (specials, announcements, seasonal banners)</li>
+              <li>Add or refine sections on existing pages</li>
+              <li>FAQ accordion section (JavaScript) if needed</li>
+              <li>Basic SEO refresh (titles/meta descriptions, headings)</li>
+            </ul>
+
+            <div class="row">
+              <button class="btn btnSoft" type="button" data-action="plan" data-plan="Standard Support ($65/mo)">Choose Standard</button>
+            </div>
           </div>
 
           <div class="miniCard">
@@ -195,10 +219,23 @@
               <div><strong>Full Service</strong><div class="small">Hands-off</div></div>
               <div class="price">$125 <small>/mo</small></div>
             </div>
-            <button class="btn btnSoft" type="button" data-action="plan" data-plan="Full Service Support ($125/mo)">Choose Full Service</button>
+
+            <ul class="list" style="margin-top:12px;">
+              <li>Everything in Standard</li>
+              <li>Priority updates and faster turnaround</li>
+              <li>Gallery section (photo grid) if you need one</li>
+              <li>Testimonials / reviews section setup and updates</li>
+              <li>Speed + mobile polish pass when needed</li>
+            </ul>
+
+            <div class="row">
+              <button class="btn btnSoft" type="button" data-action="plan" data-plan="Full Service Support ($125/mo)">Choose Full Service</button>
+            </div>
           </div>
 
-          <p class="small">Updates are handled through an active plan so everything stays consistent.</p>
+          <p class="small" style="margin-top:12px;">
+            Note: Support plans cover site edits and improvements using HTML/CSS/JavaScript (no user portals). New pages beyond the build limit, major redesigns, or one-off campaigns may be quoted as add-ons.
+          </p>
         </div>
       </div>
     </div>
@@ -209,6 +246,7 @@
     <div class="container">
       <div class="kicker">Add-ons</div>
       <h2>Extras</h2>
+      <p class="sectionLead">Add-ons are for work outside your plan or beyond the build’s included page limit.</p>
 
       <div class="grid3">
         <div class="card pad">
@@ -227,6 +265,43 @@
           <h3>Logo design</h3>
           <p class="small">$100</p>
           <button class="btn btnOutline" type="button" data-action="addon" data-addon="Logo Design ($100)">Request</button>
+        </div>
+      </div>
+
+      <p class="small" style="margin-top:12px;">
+        Common add-on requests: extra pages beyond the build, campaign pages, and branding assets.
+      </p>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <div class="kicker">Portfolio</div>
+      <h2>Recent work</h2>
+      <p class="sectionLead">A live example of my style: clean layout, mobile-first, and easy-to-contact.</p>
+
+      <div class="grid3">
+        <div class="card pad">
+          <h3>The Straight Edge Barbershop</h3>
+          <p class="small">thestraightedge514.com</p>
+
+          <ul class="list" style="margin-top:12px;">
+            <li>Mobile-first layout with clear call-to-action buttons</li>
+            <li>Structured sections for services, location, and booking</li>
+            <li>Clean, professional branding and simple navigation</li>
+          </ul>
+
+          <div class="row">
+            <a class="btn btnOutline" href="https://thestraightedge514.com" target="_blank" rel="noopener">View live site</a>
+            <button class="btn btnSoft" type="button" data-action="email"
+              data-subject="Website Inquiry - Build a Site Like Straight Edge"
+              data-message="Hey Luke,%0D%0A%0D%0AI saw your portfolio site (The Straight Edge Barbershop) and I want something similar.%0D%0A%0D%0ABusiness name:%0D%0ABest contact:%0D%0AWhat kind of site I need:%0D%0A%0D%0AThanks!">
+              Build something like this
+            </button>
+          </div>
+
+          <p class="small" style="margin-top:10px;">More projects coming soon.</p>
         </div>
       </div>
     </div>
@@ -312,6 +387,7 @@
         <button class="footBtn" type="button" data-action="scroll" data-target="services">Services</button>
         <button class="footBtn" type="button" data-action="scroll" data-target="pricing">Pricing</button>
         <button class="footBtn" type="button" data-action="scroll" data-target="addons">Add-ons</button>
+        <button class="footBtn" type="button" data-action="scroll" data-target="portfolio">Portfolio</button>
         <button class="footBtn" type="button" data-action="scroll" data-target="contact">Contact</button>
       </div>
     </div>
@@ -346,4 +422,3 @@
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>
-
