@@ -11,8 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- SIMPLE FILE NAMES -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
@@ -37,42 +36,11 @@
       <button class="navLink" type="button" data-action="scroll" data-target="portfolio">Portfolio</button>
       <button class="navLink" type="button" data-action="scroll" data-target="local">Local</button>
       <button class="btn btnSoft" type="button" data-action="scroll" data-target="contact">Get a Quote</button>
-
-      <!-- LOGIN -->
-      <button class="btn btnOutline loginBtn" id="loginBtn">Login</button>
     </nav>
   </div>
 </header>
 
 <main id="top">
-
-  <!-- DASHBOARD (HIDDEN BY DEFAULT) -->
-  <section id="dashboard" class="section hidden">
-    <div class="container">
-      <div class="kicker">Dashboard</div>
-      <h2>Your Website Overview</h2>
-
-      <div class="grid3">
-        <div class="card pad">
-          <h3>Site Status</h3>
-          <p class="small">Online · Mobile Friendly · Secure</p>
-        </div>
-
-        <div class="card pad">
-          <h3>Support Plan</h3>
-          <p class="small" id="userPlan">Standard Support</p>
-        </div>
-
-        <div class="card pad">
-          <h3>Last Update</h3>
-          <p class="small">No recent changes</p>
-        </div>
-      </div>
-
-      <button class="btn btnSoft" id="logoutBtn">Log out</button>
-    </div>
-  </section>
-
   <!-- HERO -->
   <section class="hero">
     <div class="container heroGrid">
@@ -97,11 +65,74 @@
         <div class="heroActions">
           <button class="btn btnPrimary" type="button" data-action="build">Build my website</button>
           <button class="btn btnOutline" type="button" data-action="scroll" data-target="pricing">See Pricing</button>
+
+          <button class="btn btnOutline" type="button" data-action="email"
+            data-subject="Website Inquiry - Luke Johnson"
+            data-message="Hey Luke,%0D%0A%0D%0AI would like to talk to you about building a website with a support plan.%0D%0A%0D%0ABusiness name:%0D%0ABest contact:%0D%0AWhat I need:%0D%0A%0D%0AThanks!">
+            Open Email
+          </button>
         </div>
 
         <p class="small heroEmail">
           Email: <strong>ljwebdevelopmentok@gmail.com</strong>
         </p>
+      </div>
+
+      <aside class="heroSide">
+        <div class="heroSideTop">
+          <div>
+            <div class="heroSideBold">One person. One point of contact.</div>
+            <div class="small">You talk to me. I build it. I support it.</div>
+          </div>
+          <div class="pill">Local-minded</div>
+        </div>
+
+        <div class="heroPhoto">
+          <img src="https://i.ibb.co/ZRC9yWjV/MOONDANCE-FAMILY-JOHNSON-15.avif" alt="Photo of Luke Johnson" />
+        </div>
+
+        <div class="heroSideBody">
+          <div class="heroSideBold">How it stays solid</div>
+          <ul class="checkList">
+            <li><span class="check">✓</span><span>Fast-loading pages that look good on phones.</span></li>
+            <li><span class="check">✓</span><span>Buttons that actually do something (call/email/maps).</span></li>
+            <li><span class="check">✓</span><span>Support plans keep updates handled without drama.</span></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section softBand">
+    <div class="container">
+      <div class="kicker">Services</div>
+      <h2>What I do</h2>
+      <p class="sectionLead">
+        A clean website build, then ongoing support so your site stays current. That’s the whole point.
+      </p>
+
+      <div class="grid3">
+        <div class="card pad">
+          <h3>Website build</h3>
+          <p class="small">A full build with your services, photos, contact, and location.</p>
+          <div class="spacer"></div>
+          <button class="btn btnOutline" type="button" data-action="scroll" data-target="pricing">See pricing</button>
+        </div>
+
+        <div class="card pad">
+          <h3>Mobile-first layout</h3>
+          <p class="small">Easy for customers to tap, read, and reach you quickly.</p>
+          <div class="spacer"></div>
+          <button class="btn btnOutline" type="button" data-action="scroll" data-target="contact">Ask a question</button>
+        </div>
+
+        <div class="card pad">
+          <h3>Ongoing support</h3>
+          <p class="small">Updates, fixes, promos, and improvements—handled.</p>
+          <div class="spacer"></div>
+          <button class="btn btnOutline" type="button" data-action="scroll" data-target="pricing">Compare plans</button>
+        </div>
       </div>
     </div>
   </section>
@@ -113,10 +144,7 @@
       <h2>Clear pricing</h2>
       <p class="sectionLead">One-time build + a support plan so updates stay handled.</p>
 
-      <!-- STACKED PRICING -->
-      <div class="pricingStack">
-
-        <!-- WEBSITE BUILD -->
+      <div class="split">
         <div class="card pad">
           <div class="priceTop">
             <div>
@@ -136,40 +164,261 @@
 
           <div class="row">
             <button class="btn btnPrimary" type="button" data-action="build">Build my website</button>
+            <button class="btn btnOutline" type="button" data-action="scroll" data-target="addons">See add-ons</button>
           </div>
+
+          <p class="small">Extra pages: <strong>$40 per page</strong>.</p>
+          <p class="small">After launch, changes and updates are handled through a support plan.</p>
         </div>
 
-        <!-- SUPPORT PLANS -->
+        <!-- SUPPORT PLANS (single section: cards + explained bullets under each) -->
         <div class="card pad">
           <h3>Support Plans</h3>
+          <p class="small">Choose a plan — it opens an email that’s already written.</p>
 
           <div class="miniCard">
-            <strong>Basic</strong> — $45/mo
-          </div>
+            <div class="priceTop">
+              <div><strong>Basic</strong><div class="small">Minor updates</div></div>
+              <div class="price">$45 <small>/mo</small></div>
+            </div>
 
-          <div class="miniCard popular">
-            <div class="popularBadge">POPULAR</div>
-            <strong>Standard</strong> — $75/mo
+            <ul class="list" style="margin-top:12px;">
+              <li>Text edits (hours, pricing, service descriptions)</li>
+              <li>Link fixes (call/email/maps buttons)</li>
+              <li>Swap or update existing images</li>
+              <li>Small layout adjustments to keep things clean</li>
+              <li>Basic troubleshooting if something looks off</li>
+            </ul>
+
+            <div class="row">
+              <button class="btn btnSoft" type="button" data-action="plan" data-plan="Basic Support ($30/mo)">Choose Basic</button>
+            </div>
           </div>
 
           <div class="miniCard">
-            <strong>Full Service</strong> — $145/mo
+            <div class="priceTop">
+              <div><strong>Standard</strong><div class="small">Regular promos</div></div>
+              <div class="price">$75 <small>/mo</small></div>
+            </div>
+
+            <ul class="list" style="margin-top:12px;">
+              <li>Everything in Basic</li>
+              <li>Promo updates (specials, announcements, seasonal banners)</li>
+              <li>Add or refine sections on existing pages</li>
+              <li>FAQ accordion section (JavaScript) if needed</li>
+              <li>Basic SEO refresh (titles/meta descriptions, headings)</li>
+            </ul>
+
+            <div class="row">
+              <button class="btn btnSoft" type="button" data-action="plan" data-plan="Standard Support ($65/mo)">Choose Standard</button>
+            </div>
           </div>
+
+          <div class="miniCard">
+            <div class="priceTop">
+              <div><strong>Full Service</strong><div class="small">Hands-off</div></div>
+              <div class="price">$145 <small>/mo</small></div>
+            </div>
+
+            <ul class="list" style="margin-top:12px;">
+              <li>Everything in Standard</li>
+              <li>Priority updates and faster turnaround</li>
+              <li>Gallery section (photo grid) if you need one</li>
+              <li>Testimonials / reviews section setup and updates</li>
+              <li>Speed + mobile polish pass when needed</li>
+            </ul>
+
+            <div class="row">
+              <button class="btn btnSoft" type="button" data-action="plan" data-plan="Full Service Support ($125/mo)">Choose Full Service</button>
+            </div>
+          </div>
+
+          <p class="small" style="margin-top:12px;">
+            Note: Support plans cover site edits and improvements using HTML/CSS/JavaScript. New pages beyond the build limit, major redesigns, or one-off campaigns may be quoted as add-ons.
+          </p>
         </div>
-
       </div>
     </div>
   </section>
 
+  <!-- ADD-ONS -->
+  <section id="addons" class="section softBand">
+    <div class="container">
+      <div class="kicker">Add-ons</div>
+      <h2>Extras</h2>
+      <p class="sectionLead">Add-ons are for work outside your plan or beyond the build’s included page limit.</p>
+
+      <div class="grid3">
+        <div class="card pad">
+          <h3>Extra page</h3>
+          <p class="small">$40</p>
+          <button class="btn btnOutline" type="button" data-action="addon" data-addon="Extra Page ($40)">Request</button>
+        </div>
+
+        <div class="card pad">
+          <h3>Promo landing page</h3>
+          <p class="small">$100</p>
+          <button class="btn btnOutline" type="button" data-action="addon" data-addon="Promo Landing Page ($100)">Request</button>
+        </div>
+
+        <div class="card pad">
+          <h3>Logo design</h3>
+          <p class="small">$100</p>
+          <button class="btn btnOutline" type="button" data-action="addon" data-addon="Logo Design ($100)">Request</button>
+        </div>
+      </div>
+
+      <p class="small" style="margin-top:12px;">
+        Common add-on requests: extra pages beyond the build, campaign pages, and branding assets.
+      </p>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <div class="kicker">Portfolio</div>
+      <h2>Recent work</h2>
+      <p class="sectionLead">A live example of my style: clean layout, mobile-first, and easy-to-contact.</p>
+
+      <div class="grid3">
+        <div class="card pad">
+          <h3>The Straight Edge Barbershop</h3>
+          <p class="small">thestraightedge514.com</p>
+
+          <ul class="list" style="margin-top:12px;">
+            <li>Mobile-first layout with clear call-to-action buttons</li>
+            <li>Structured sections for services, location, and booking</li>
+            <li>Clean, professional branding and simple navigation</li>
+          </ul>
+
+          <div class="row">
+            <a class="btn btnOutline" href="https://thestraightedge514.com" target="_blank" rel="noopener">View live site</a>
+            <button class="btn btnSoft" type="button" data-action="email"
+              data-subject="Website Inquiry - Build a Site Like Straight Edge"
+              data-message="Hey Luke,%0D%0A%0D%0AI saw your portfolio site (The Straight Edge Barbershop) and I want something similar.%0D%0A%0D%0ABusiness name:%0D%0ABest contact:%0D%0AWhat kind of site I need:%0D%0A%0D%0AThanks!">
+              Build something like this
+            </button>
+          </div>
+
+          <p class="small" style="margin-top:10px;">More projects coming soon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCAL -->
+  <section id="local" class="section">
+    <div class="container split">
+      <div>
+        <div class="kicker">Local</div>
+        <h2>From Tahlequah — serving more than Tahlequah</h2>
+        <p class="sectionLead">Local feel, clean work, and support that keeps the site updated.</p>
+
+        <div class="row">
+          <a class="btn btnOutline" href="https://www.google.com/maps?q=Tahlequah+OK" target="_blank" rel="noopener">Open in Google Maps</a>
+          <button class="btn btnSoft" type="button" data-action="scroll" data-target="contact">Message me</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="imgCard">
+          <img src="https://i.ibb.co/RkyDnNZb/image.png" alt="Welcome to Tahlequah sign" />
+        </div>
+
+        <div class="mapCard">
+          <iframe class="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Tahlequah%20OK&output=embed"></iframe>
+          <div class="mapCap">
+            <div><strong>Tahlequah, Oklahoma</strong><br><span class="small">Home base</span></div>
+            <span>Local</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section softTop">
+    <div class="container split">
+      <div>
+        <div class="kicker">Contact</div>
+        <h2>Let’s talk</h2>
+        <p class="sectionLead">Click the button — it opens an email that’s already written.</p>
+
+        <div class="card pad">
+          <h3>Contact</h3>
+          <div class="row">
+            <button class="btn btnPrimary" type="button" data-action="email"
+              data-subject="Website Inquiry - Luke Johnson"
+              data-message="Hey Luke,%0D%0A%0D%0AI would like to talk to you about building a website with a support plan.%0D%0A%0D%0ABusiness name:%0D%0ABest contact:%0D%0AWhat I need:%0D%0A%0D%0AThanks!">
+              Open Email
+            </button>
+            <button class="btn btnOutline" type="button" data-action="scroll" data-target="pricing">Compare plans</button>
+          </div>
+
+          <p class="small">Email: <strong>ljwebdevelopmentok@gmail.com</strong></p>
+        </div>
+      </div>
+
+      <div class="card pad">
+        <h3>Quick form</h3>
+        <p class="small">This generates the message, then opens the email options.</p>
+
+        <form id="quoteForm" class="form">
+          <input id="name" type="text" placeholder="Your name" required>
+          <input id="biz" type="text" placeholder="Business name">
+          <select id="need">
+            <option>Website Build + Basic Support ($30/mo)</option>
+            <option>Website Build + Standard Support ($65/mo)</option>
+            <option>Website Build + Full Service Support ($125/mo)</option>
+          </select>
+          <textarea id="details" rows="4" placeholder="Anything specific you want on the site? (hours, services, photos, deadline)"></textarea>
+          <button class="btn btnPrimary" type="submit">Open email options</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot">
+      <div>© <span id="year"></span> Luke Johnson · Web Development</div>
+      <div class="footLinks">
+        <button class="footBtn" type="button" data-action="scroll" data-target="services">Services</button>
+        <button class="footBtn" type="button" data-action="scroll" data-target="pricing">Pricing</button>
+        <button class="footBtn" type="button" data-action="scroll" data-target="addons">Add-ons</button>
+        <button class="footBtn" type="button" data-action="scroll" data-target="portfolio">Portfolio</button>
+        <button class="footBtn" type="button" data-action="scroll" data-target="contact">Contact</button>
+      </div>
+    </div>
+  </footer>
+
+  <button class="supportBtn" id="supportBtn" type="button">Quick Support</button>
 </main>
 
-<footer>
-  <div class="container foot">
-    <div>© <span id="year"></span> Luke Johnson · Web Development</div>
-  </div>
-</footer>
+<!-- Email Modal -->
+<div class="modalBack" id="modalBack" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Email options">
+    <div class="modalHead">
+      <strong>Email options</strong>
+      <button class="xBtn" id="closeModal" type="button" aria-label="Close">✕</button>
+    </div>
+    <div class="modalBody">
+      <div class="modalSubject" id="modalSubject">Subject</div>
+      <div class="small">Some runners block email apps. If that happens, use Gmail or copy the message.</div>
 
-<!-- SIMPLE FILE NAME -->
-<script src="script.js" defer></script>
+      <div class="modalActions">
+        <button class="btn btnPrimary" type="button" id="openMailApp">Open Email App</button>
+        <button class="btn btnOutline" type="button" id="openGmail">Open Gmail</button>
+        <button class="btn btnSoft" type="button" id="copyMsg">Copy Message</button>
+      </div>
+
+      <div class="msgBox" id="modalMessage"></div>
+      <div class="toast" id="toast">Copied.</div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
