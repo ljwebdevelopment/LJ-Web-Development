@@ -11,23 +11,90 @@
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 </head>
 
-<body class="softTop">
-  <main class="section">
-    <div class="container" style="max-width:420px;">
-      <div class="card pad">
-        <h2>Client Portal</h2>
-        <p class="small">Sign in to view your website dashboard.</p>
-
-        <form id="loginForm" class="form">
-          <input type="email" id="email" placeholder="Email" required />
-          <input type="password" id="password" placeholder="Password" required />
-          <button class="btn btnPrimary" type="submit">Sign in</button>
-        </form>
-
-        <p class="small" id="loginError" style="margin-top:10px;color:#b91c1c;"></p>
+<body class="page-login">
+  <main class="loginShell" aria-label="Client Login">
+    <div class="loginCard card pad">
+      <!-- Logo -->
+      <div class="loginBrand">
+        <img
+          class="loginLogo"
+          src="LJ Web Development Logo.png"
+          alt="LJ Web Development"
+          loading="eager"
+        />
       </div>
+
+      <div class="loginHead">
+        <h2 class="loginTitle">Client Portal</h2>
+        <p class="small loginSub">Sign in to view your website dashboard.</p>
+      </div>
+
+      <form id="loginForm" class="form loginForm" autocomplete="on">
+        <div class="field">
+          <label class="srOnly" for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            autocomplete="email"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label class="srOnly" for="password">Password</label>
+
+          <div class="pwWrap">
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              autocomplete="current-password"
+              required
+            />
+            <button class="pwToggle" type="button" id="togglePw" aria-label="Show password">
+              Show
+            </button>
+          </div>
+
+          <div class="row loginRow">
+            <label class="remember">
+              <input type="checkbox" id="rememberMe" />
+              <span>Remember me</span>
+            </label>
+
+            <a class="miniLink" href="index.html">Back to site</a>
+          </div>
+        </div>
+
+        <button class="btn btnPrimary loginBtnFull" type="submit">
+          Sign in
+        </button>
+
+        <p class="small loginNote">
+          Need access? Email <strong>ljwebdevelopment</strong> for credentials.
+        </p>
+
+        <p class="small" id="loginError" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </main>
+
+  <!-- Small UI-only script (doesn't touch Firebase logic) -->
+  <script>
+    (function () {
+      const pw = document.getElementById("password");
+      const btn = document.getElementById("togglePw");
+      if (!pw || !btn) return;
+
+      btn.addEventListener("click", () => {
+        const show = pw.type === "password";
+        pw.type = show ? "text" : "password";
+        btn.textContent = show ? "Hide" : "Show";
+        btn.setAttribute("aria-label", show ? "Hide password" : "Show password");
+      });
+    })();
+  </script>
 
   <script src="portal.js"></script>
 </body>
