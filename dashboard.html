@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard | LJ Web Development</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Firebase CDN -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+</head>
+
+<body class="softTop">
+  <main class="section">
+    <div class="container">
+      <div class="kicker">Dashboard</div>
+      <h2>Your Website</h2>
+
+      <div class="grid3">
+        <div class="card pad">
+          <h3>Plan</h3>
+          <p class="small" id="plan">—</p>
+        </div>
+
+        <div class="card pad">
+          <h3>Website</h3>
+          <p class="small"><a id="website" href="#" target="_blank">—</a></p>
+        </div>
+
+        <div class="card pad">
+          <h3>Last Update</h3>
+          <p class="small" id="lastUpdate">—</p>
+        </div>
+      </div>
+
+      <div class="card pad" style="margin-top:16px;">
+        <h3>Notes</h3>
+        <p class="small" id="notes">—</p>
+      </div>
+
+      <div class="row" style="margin-top:18px;">
+        <button class="btn btnOutline" id="logout">Log out</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="portal.js"></script>
+</body>
+</html>
