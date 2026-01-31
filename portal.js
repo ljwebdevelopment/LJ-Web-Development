@@ -1,136 +1,67 @@
-/* =========================================================
-   LJ Web Development — Client Portal (static/demo)
-   - Professional UX, upgradeable to real auth later
-========================================================= */
+// Firebase config (SAFE to expose)
+const firebaseConfig = {
+  apiKey: "AIzaSyDBPFR35ijo-UTfnC22y0FR2rVMBVo5RE0",
+  authDomain: "lj-web-development-portal.firebaseapp.com",
+  projectId: "lj-web-development-portal",
+  storageBucket: "lj-web-development-portal.firebasestorage.app",
+  messagingSenderId: "1027196050099",
+  appId: "1:1027196050099:web:38e50f1be663ec14d62ec6"
+};
 
-const SESSION_KEY = "ljwd_portal_session_v1";
+// Init Firebase
+firebase.initializeApp(firebaseConfig);
 
-function setSession(data){
-  try{ localStorage.setItem(SESSION_KEY, JSON.stringify(data)); }catch(e){}
-}
-function getSession(){
-  try{
-    const raw = localStorage.getItem(SESSION_KEY);
-    return raw ? JSON.parse(raw) : null;
-  }catch(e){ return null; }
-}
-function clearSession(){
-  try{ localStorage.removeItem(SESSION_KEY); }catch(e){}
-}
+const auth = firebase.auth();
+const db = firebase.firestore();
 
-function isOnLoginPage(){
-  return /login\.html$/i.test(location.pathname) || document.getElementById("portalLoginForm");
-}
-function isOnDashboardPage(){
-  return /dashboard\.html$/i.test(location.pathname) || document.getElementById("logoutBtn");
-}
+/* ============================
+   LOGIN
+============================ */
+const loginForm = document.getElementById("loginForm");
+const loginError = document.getElementById("loginError");
 
-function go(url){
-  window.location.href = url;
-}
+loginForm?.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-/* =========================================================
-   LOGIN PAGE
-========================================================= */
-function initLogin(){
-  const form = document.getElementById("portalLoginForm");
-  const msg = document.getElementById("portalMsg");
-  const demoBtn = document.getElementById("demoLoginBtn");
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-  // If already logged in, go straight to dashboard
-  const existing = getSession();
-  if(existing?.loggedIn) go("dashboard.html");
-
-  function showMessage(text){
-    if(msg) msg.textContent = text || "";
+  try {
+    await auth.signInWithEmailAndPassword(email, password);
+    window.location.href = "dashboard.html";
+  } catch (err) {
+    loginError.textContent = err.message;
   }
+});
 
-  demoBtn?.addEventListener("click", ()=>{
-    const demo = {
-      loggedIn: true,
-      email: "demo@client.com",
-      plan: "Standard Support",
-      lastUpdate: "Jan 30, 2026",
-      status: "Live • Monitoring enabled",
-      siteUrl: "https://ljwebdevelopment.com",
-      notes: "Demo portal view. Replace with client-specific info later."
-    };
-    setSession(demo);
-    go("dashboard.html");
-  });
-
-  form?.addEventListener("submit", (e)=>{
-    e.preventDefault();
-    const email = document.getElementById("portalEmail")?.value?.trim() || "";
-    const pass = document.getElementById("portalPass")?.value || "";
-
-    const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const okPass = pass.length >= 6;
-
-    if(!okEmail || !okPass){
-      showMessage("Check your login: valid email + password must be 6+ characters. Or use Demo Login.");
-      return;
-    }
-
-    // Static portal behavior (upgrade later to real auth)
-    const session = {
-      loggedIn: true,
-      email,
-      plan: "Support plan",
-      lastUpdate: "—",
-      status: "Live • Portal access enabled",
-      siteUrl: "",
-      notes: "Client portal enabled. (Upgrade to real auth when ready.)"
-    };
-
-    setSession(session);
-    go("dashboard.html");
-  });
-}
-
-/* =========================================================
-   DASHBOARD PAGE
-========================================================= */
-function initDashboard(){
-  const session = getSession();
-  if(!session?.loggedIn){
-    go("login.html");
+/* ============================
+   DASHBOARD (protected)
+============================ */
+auth.onAuthStateChanged(async (user) => {
+  if (!user && window.location.pathname.includes("dashboard")) {
+    window.location.href = "login.html";
     return;
   }
 
-  const welcomeLine = document.getElementById("welcomeLine");
-  const planLine = document.getElementById("planLine");
-  const updateLine = document.getElementById("updateLine");
-  const statusLine = document.getElementById("statusLine");
-  const notesLine = document.getElementById("notesLine");
-  const siteLink = document.getElementById("siteLink");
+  if (user && document.getElementById("plan")) {
+    const doc = await db.collection("clients").doc(user.uid).get();
+    if (doc.exists) {
+      const data = doc.data();
+      document.getElementById("plan").textContent = data.plan || "—";
+      document.getElementById("lastUpdate").textContent = data.lastUpdate || "—";
+      document.getElementById("notes").textContent = data.notes || "—";
 
-  if(welcomeLine) welcomeLine.textContent = `Welcome, ${session.email}.`;
-  if(planLine) planLine.textContent = session.plan || "—";
-  if(updateLine) updateLine.textContent = session.lastUpdate || "—";
-  if(statusLine) statusLine.textContent = session.status || "—";
-  if(notesLine) notesLine.textContent = session.notes || notesLine.textContent;
-
-  if(siteLink){
-    if(session.siteUrl){
-      siteLink.href = session.siteUrl;
-      siteLink.textContent = session.siteUrl.replace(/^https?:\/\//, "");
-    }else{
-      siteLink.href = "index.html";
-      siteLink.textContent = "Add your website link";
+      const site = document.getElementById("website");
+      site.textContent = data.website || "—";
+      site.href = data.website || "#";
     }
   }
+});
 
-  document.getElementById("logoutBtn")?.addEventListener("click", ()=>{
-    clearSession();
-    go("login.html");
-  });
-}
-
-/* =========================================================
-   INIT
-========================================================= */
-(function(){
-  if(isOnLoginPage()) initLogin();
-  if(isOnDashboardPage()) initDashboard();
-})();
+/* ============================
+   LOGOUT
+============================ */
+document.getElementById("logout")?.addEventListener("click", async () => {
+  await auth.signOut();
+  window.location.href = "login.html";
+});
