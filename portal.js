@@ -163,6 +163,18 @@ async function loadClientData(user) {
   }
 
   const data = typeof snap.data === "function" ? snap.data() : snap.data; // supports both doc + query doc
+   const photoUrl = safe.photoUrl || "";
+const avatar = document.getElementById("clientAvatar");
+
+if (avatar) {
+  if (photoUrl) {
+    avatar.src = photoUrl;
+    avatar.alt = "Client photo";
+  } else {
+    avatar.removeAttribute("src");
+    avatar.alt = "";
+  }
+}
   const safe = data || {};
 
   const plan = safe.plan || "—";
