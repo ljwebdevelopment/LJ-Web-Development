@@ -1,5 +1,7 @@
 const EMAIL_TO = "ljwebdevelopmentok@gmail.com";
 
+/* =========================================================const EMAIL_TO = "ljwebdevelopmentok@gmail.com";
+
 /* =========================================================
    Helpers
 ========================================================= */
@@ -90,121 +92,14 @@ copyMsgBtn?.addEventListener("click", async ()=>{
 });
 
 /* =========================================================
-   Login + Dashboard (NEW)
-   - Client-side "session" placeholder
-========================================================= */
-const loginBack = document.getElementById("loginBack");
-const closeLoginBtn = document.getElementById("closeLogin");
-const loginForm = document.getElementById("loginForm");
-const loginMsg = document.getElementById("loginMsg");
-
-const dashSection = document.getElementById("dashboard");
-const dashPlan = document.getElementById("dashPlan");
-const dashLastUpdate = document.getElementById("dashLastUpdate");
-
-const SESSION_KEY = "ljwd_session_v1";
-
-function openLogin(){
-  if(!loginBack) return;
-  loginBack.style.display = "flex";
-  loginBack.setAttribute("aria-hidden", "false");
-  loginMsg && (loginMsg.textContent = "");
-}
-
-function closeLogin(){
-  if(!loginBack) return;
-  loginBack.style.display = "none";
-  loginBack.setAttribute("aria-hidden", "true");
-}
-
-closeLoginBtn?.addEventListener("click", closeLogin);
-loginBack?.addEventListener("click", (e)=>{ if(e.target === loginBack) closeLogin(); });
-
-// Simple session helpers
-function setSession(session){
-  try{
-    localStorage.setItem(SESSION_KEY, JSON.stringify(session));
-  }catch(e){}
-}
-function getSession(){
-  try{
-    const raw = localStorage.getItem(SESSION_KEY);
-    return raw ? JSON.parse(raw) : null;
-  }catch(e){
-    return null;
-  }
-}
-function clearSession(){
-  try{ localStorage.removeItem(SESSION_KEY); }catch(e){}
-}
-
-function showDashboard(session){
-  if(!dashSection) return;
-  dashSection.hidden = false;
-
-  // Optional: populate placeholders
-  if(dashPlan) dashPlan.textContent = session?.plan || "Support plan";
-  if(dashLastUpdate) dashLastUpdate.textContent = session?.lastUpdate || "—";
-
-  // Scroll to dashboard once shown (feels intentional)
-  scrollToId("dashboard");
-}
-
-function hideDashboard(){
-  if(!dashSection) return;
-  dashSection.hidden = true;
-}
-
-// Called on load
-function syncAuthUI(){
-  const session = getSession();
-  if(session && session.loggedIn){
-    showDashboard(session);
-  }else{
-    hideDashboard();
-  }
-}
-
-/* =========================================================
-   Global click router (UPDATED: added login actions)
+   Global click router (cleaned)
+   - Login/dashboard actions removed (now on separate page)
 ========================================================= */
 document.addEventListener("click", function(e){
   const t = e.target.closest("[data-action]");
   if(!t) return;
 
   const action = t.getAttribute("data-action");
-
-  // NEW: login open
-  if(action === "open-login"){
-    e.preventDefault();
-    openLogin();
-    return;
-  }
-
-  // NEW: demo login
-  if(action === "demo-login"){
-    e.preventDefault();
-    const demo = {
-      loggedIn: true,
-      email: "demo@client.com",
-      plan: "Standard Support",
-      lastUpdate: "Not set yet"
-    };
-    setSession(demo);
-    closeLogin();
-    syncAuthUI();
-    return;
-  }
-
-  // NEW: logout
-  if(action === "logout"){
-    e.preventDefault();
-    clearSession();
-    hideDashboard();
-    // Optional: take them back to top so it feels clean
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    return;
-  }
 
   if(action === "scroll"){
     e.preventDefault();
@@ -257,43 +152,7 @@ document.addEventListener("click", function(e){
 });
 
 /* =========================================================
-   Login form submit (NEW)
-   - Placeholder validation (client-side only)
-========================================================= */
-loginForm?.addEventListener("submit", (e)=>{
-  e.preventDefault();
-
-  const email = document.getElementById("loginEmail")?.value?.trim() || "";
-  const pass = document.getElementById("loginPass")?.value || "";
-
-  // Placeholder rules:
-  // - must look like an email
-  // - password length >= 4 (just to prevent empty)
-  const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const okPass = pass.length >= 4;
-
-  if(!okEmail || !okPass){
-    if(loginMsg){
-      loginMsg.textContent = "Invalid login. Use a real email + a password (4+ characters). Or tap Demo login.";
-    }
-    return;
-  }
-
-  // Create a simple "session"
-  const session = {
-    loggedIn: true,
-    email,
-    plan: "Support plan",
-    lastUpdate: "—"
-  };
-
-  setSession(session);
-  closeLogin();
-  syncAuthUI();
-});
-
-/* =========================================================
-   Quick Support (existing)
+   Quick Support
 ========================================================= */
 document.getElementById("supportBtn")?.addEventListener("click", ()=>{
   const subject = "Quick Support - Luke Johnson";
@@ -304,7 +163,7 @@ document.getElementById("supportBtn")?.addEventListener("click", ()=>{
 });
 
 /* =========================================================
-   Quote form → opens email modal (existing)
+   Quote form → opens email modal
 ========================================================= */
 document.getElementById("quoteForm")?.addEventListener("submit", (e)=>{
   e.preventDefault();
@@ -323,30 +182,33 @@ document.getElementById("quoteForm")?.addEventListener("submit", (e)=>{
 });
 
 /* =========================================================
-   Mobile nav toggle (existing)
+   Mobile nav toggle
+   FIX: close menu when clicking ANY nav item (button or link)
 ========================================================= */
 const menuBtn = document.getElementById("menuBtn");
 const nav = document.getElementById("nav");
+
+function closeNav(){
+  menuBtn?.classList.remove("active");
+  nav?.classList.remove("open");
+}
+
 if(menuBtn && nav){
   menuBtn.addEventListener("click", function(){
     menuBtn.classList.toggle("active");
     nav.classList.toggle("open");
   });
-  nav.querySelectorAll("button").forEach(function(btn){
-    btn.addEventListener("click", function(){
-      menuBtn.classList.remove("active");
-      nav.classList.remove("open");
-    });
+
+  // close on any click inside nav (buttons or links)
+  nav.addEventListener("click", (e)=>{
+    const clickedItem = e.target.closest("button, a");
+    if(!clickedItem) return;
+    closeNav();
   });
 }
 
 /* =========================================================
-   Year (existing)
+   Year
 ========================================================= */
 const y = document.getElementById("year");
 if(y) y.textContent = new Date().getFullYear();
-
-/* =========================================================
-   Init
-========================================================= */
-syncAuthUI();
