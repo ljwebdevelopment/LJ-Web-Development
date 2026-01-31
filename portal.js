@@ -112,16 +112,16 @@ async function loadClientData(user) {
   const displayName = user.displayName || (user.email ? user.email.split("@")[0] : "");
   setText("helloName", displayName || "—");
 
-  // Avatar (optional: use photoURL if present)
-  const avatar = byId("clientAvatar");
-  if (avatar) {
+  // Avatar element (we will set after we load Firestore data too)
+  const avatarEl = byId("clientAvatar");
+  if (avatarEl) {
+    // temporary: use auth profile photo if present, otherwise hide src
     if (user.photoURL) {
-      avatar.src = user.photoURL;
-      avatar.alt = "Client avatar";
+      avatarEl.src = user.photoURL;
+      avatarEl.alt = "Client photo";
     } else {
-      // Hide broken img if empty
-      avatar.removeAttribute("src");
-      avatar.alt = "";
+      avatarEl.removeAttribute("src");
+      avatarEl.alt = "";
     }
   }
 
@@ -138,19 +138,22 @@ async function loadClientData(user) {
   }
 
   // 1) Try clients/{uid}
-  let snap = await db.collection("clients").doc(user.uid).get();
+  let docSnap = await db.collection("clients").doc(user.uid).get();
+  let safe = docSnap.exists ? (docSnap.data() || {}) : null;
 
   // 2) Fallback: query by email (in case your doc IDs are not UIDs)
-  if (!snap.exists && user.email) {
+  if (!safe && user.email) {
     const q = await db.collection("clients")
       .where("email", "==", user.email)
       .limit(1)
       .get();
 
-    if (!q.empty) snap = q.docs[0];
+    if (!q.empty) {
+      safe = q.docs[0].data() || {};
+    }
   }
 
-  if (!snap.exists) {
+  if (!safe) {
     // Nothing found in Firestore for this user
     setText("plan", "—");
     setText("lastUpdate", "—");
@@ -162,20 +165,20 @@ async function loadClientData(user) {
     return;
   }
 
-  const data = typeof snap.data === "function" ? snap.data() : snap.data; // supports both doc + query doc
-   const photoUrl = safe.photoUrl || "";
-const avatar = document.getElementById("clientAvatar");
-
-if (avatar) {
-  if (photoUrl) {
-    avatar.src = photoUrl;
-    avatar.alt = "Client photo";
-  } else {
-    avatar.removeAttribute("src");
-    avatar.alt = "";
+  // ✅ Photo from Firestore (preferred)
+  const photoUrl = safe.photoUrl || safe.photo || "";
+  if (avatarEl) {
+    if (photoUrl) {
+      avatarEl.src = photoUrl;
+      avatarEl.alt = "Client photo";
+    } else if (user.photoURL) {
+      avatarEl.src = user.photoURL;
+      avatarEl.alt = "Client photo";
+    } else {
+      avatarEl.removeAttribute("src");
+      avatarEl.alt = "";
+    }
   }
-}
-  const safe = data || {};
 
   const plan = safe.plan || "—";
   const lastUpdate = safe.lastUpdate || "—";
@@ -240,12 +243,10 @@ function wireSupportForm(user) {
         return;
       }
 
-      // Pull what’s already on the page if available
       const plan = byId("plan")?.textContent || byId("planMeta")?.textContent || "—";
       const website = byId("website")?.textContent || byId("websiteMeta")?.textContent || "—";
       const businessName = byId("helloName")?.textContent || "";
 
-      // Fill hidden POST inputs
       sheetPostForm.elements["uid"].value = user.uid || "";
       sheetPostForm.elements["email"].value = user.email || "";
       sheetPostForm.elements["businessName"].value = businessName || "";
@@ -257,16 +258,13 @@ function wireSupportForm(user) {
       sheetPostForm.elements["pageUrl"].value = pageUrl;
       sheetPostForm.elements["message"].value = message;
 
-      // Submit to Apps Script via hidden iframe
       sheetPostForm.submit();
 
-      // Reset visible form
       supportForm.reset();
       if (impactNum) impactNum.textContent = "5";
 
       if (toast) {
         toast.style.display = "block";
-        // auto-hide after a bit
         setTimeout(() => { toast.style.display = "none"; }, 4000);
       }
     } catch (err) {
@@ -306,7 +304,6 @@ auth.onAuthStateChanged(async (user) => {
     return;
   }
 
-  // If we’re on dashboard and logged in, populate data + wire UI
   if (user && isDashboardPage()) {
     wireLogout();
     await loadClientData(user);
