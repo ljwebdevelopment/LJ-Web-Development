@@ -76,7 +76,7 @@ strong{color:var(--ink)}
 .btnSoft{background:var(--accentSoft);border:1px solid rgba(245,158,11,.35);color:#7c2d12}
 .btnSoft:hover{transform:translateY(-1px);box-shadow:0 16px 40px rgba(245,158,11,.18)}
 
-/* NEW: small polish for header login button */
+/* small polish for header login button */
 .loginBtn{
   padding:10px 14px;
   font-size:.9rem;
@@ -217,8 +217,7 @@ nav{display:flex;align-items:center;gap:18px}
 .sectionLead{margin-top:10px;max-width:780px}
 
 /* =========================
-   PRICING (NEW: stacked layout + popular)
-   Fixes the left whitespace issue from .split
+   PRICING (stacked layout)
 ========================= */
 .pricingStack{
   margin-top:18px;
@@ -227,9 +226,11 @@ nav{display:flex;align-items:center;gap:18px}
   gap:18px;
 }
 
-/* Make the "popular" build card subtly stand out */
+/* If you ever use cornerTag again: ensure it never covers content behind it */
+/* FIX: reserve space so absolute badge doesn't overlap headings */
 .popularCard{
   position:relative;
+  padding-top:44px; /* reserves space for cornerTag */
   border-color: rgba(245,158,11,.40);
   box-shadow:0 20px 55px rgba(245,158,11,.10);
 }
@@ -255,6 +256,7 @@ nav{display:flex;align-items:center;gap:18px}
   letter-spacing:.06em;
   text-transform:uppercase;
   box-shadow:0 18px 40px rgba(245,158,11,.28);
+  z-index:2;
 }
 
 /* Support plans card */
@@ -283,7 +285,38 @@ nav{display:flex;align-items:center;gap:18px}
 .plansGrid .miniCard .row{margin-top:auto}
 
 /* =========================
-   Portfolio (NEW: favicon cover + hover preview)
+   Standard Support Highlight (NEW)
+   FIX: badge is in normal flow, never overlaps content
+========================= */
+.featuredPlan{
+  border-color: rgba(245,158,11,.55);
+  box-shadow:0 20px 60px rgba(245,158,11,.14);
+  position:relative;
+}
+.featuredPlan .planBadge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:fit-content;
+  padding:7px 10px;
+  border-radius:999px;
+  background:var(--accent);
+  color:#111827;
+  font-weight:900;
+  font-size:.72rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  box-shadow:0 18px 40px rgba(245,158,11,.22);
+  margin-bottom:10px;
+}
+
+/* Optional: subtly emphasize Standard's price */
+.featuredPlan .price{
+  color: var(--ink);
+}
+
+/* =========================
+   Portfolio (favicon cover + hover preview)
 ========================= */
 .portfolioCard{overflow:hidden}
 .portfolioLink{
@@ -319,7 +352,7 @@ nav{display:flex;align-items:center;gap:18px}
   border:1px solid rgba(229,231,235,.9);
   box-shadow:0 22px 70px rgba(15,23,42,.16);
   opacity:0;
-  pointer-events:none;
+  pointer-events:none; /* FIX: never block the link click */
   transition:opacity .18s ease, transform .18s ease;
   background:#fff;
 }
@@ -335,16 +368,12 @@ nav{display:flex;align-items:center;gap:18px}
   box-shadow:0 18px 55px rgba(15,23,42,.12);
 }
 
-/* =========================
-   Dashboard (NEW)
-========================= */
-.dashboard{
-  background: linear-gradient(180deg, #ffffff 0, #fffaf0 100%);
-  border-top:1px solid rgba(229,231,235,.9);
-  border-bottom:1px solid rgba(229,231,235,.9);
+/* FIX: make sure the whole card remains clickable even with internal elements */
+.portfolioLink *{
+  pointer-events:none;
 }
-.dashboard .card{
-  box-shadow:0 16px 45px rgba(15,23,42,.06);
+.portfolioLink{
+  pointer-events:auto;
 }
 
 /* =========================
@@ -385,7 +414,7 @@ footer{border-top:1px solid rgba(229,231,235,.9);padding:22px 0 36px;color:var(-
 .supportBtn:hover{transform:translateY(-1px);box-shadow:0 26px 70px rgba(245,158,11,.45)}
 
 /* =========================
-   Modals (Email + Login)
+   Modals (Email)
 ========================= */
 .modalBack{
   position:fixed;inset:0;z-index:100;
@@ -476,14 +505,17 @@ footer{border-top:1px solid rgba(229,231,235,.9);padding:22px 0 36px;color:var(-
   nav.open{opacity:1;pointer-events:auto;transform:translateY(0)}
   .menuBtn{display:inline-flex}
 
-  /* Portfolio hover becomes tap-friendly on mobile:
-     show preview as a normal block below the favicon when present */
+  /* Portfolio hover becomes tap-friendly on mobile */
   .portfolioPreview{
     position:static;
     width:100%;
     transform:none;
     opacity:1;
     margin-top:12px;
-    pointer-events:auto;
+    pointer-events:none; /* still never blocks */
   }
+
+  /* keep the link tap working on mobile */
+  .portfolioLink *{pointer-events:none}
+  .portfolioLink{pointer-events:auto}
 }
