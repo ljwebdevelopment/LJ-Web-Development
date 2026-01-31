@@ -13,7 +13,7 @@ const firebaseConfig = {
 // 1) Deploy your Apps Script as a Web App
 // 2) Paste the Web App URL here
 // ============================
-const SUPPORT_ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbxcGAnbvZRG8mtsfhx2tzRGTPSGoNxkAjnRO2I7vyRTnMPB6hC6mrUtT0QASJr4hY-l8A/exec";
+const SUPPORT_ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbw6rwQhDFBs8xi-xUOnJfJ_IsebpZRZxS9iKp1sb7AX5ltzEOtYXo8drmhX7Vm9Y2Ju3w/exec";
 
 // Init Firebase safely
 if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
