@@ -139,19 +139,25 @@ if (loginForm) {
     const stopLoading = setButtonLoading(loginButton, "Signing in…");
 
     try {
-      const persistence = (rememberMe && rememberMe.checked)
-        ? firebase.auth.Auth.Persistence.LOCAL
-        : firebase.auth.Auth.Persistence.SESSION;
+  await fetch(SUPPORT_ENDPOINT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(payload)
+  });
 
-      await auth.setPersistence(persistence);
-      await auth.signInWithEmailAndPassword(email, password);
+  // With no-cors, the browser won’t let us read the response.
+  // If the request is dispatched, we treat it as success.
+  form.reset();
+  if (impactNum) impactNum.textContent = "5";
+  if (toast) toast.style.display = "block";
+} catch (err) {
+  if (errBox) errBox.textContent = "Couldn’t send request. Please try again in a moment.";
+  console.error("Support submit error:", err);
+} finally {
+  stopLoading();
+}
 
-      window.location.href = "dashboard.html";
-    } catch (err) {
-      if (loginError) loginError.textContent = friendlyAuthError(err);
-    } finally {
-      stopLoading();
-    }
   });
 }
 
