@@ -775,6 +775,111 @@ footer{border-top:1px solid rgba(229,231,235,.9);padding:22px 0 36px;color:var(-
    ========================================================== */
 
 .dashTop{margin-bottom:14px}
+.dashSection{margin-top:18px}
+.dashGrid{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.dashSplit{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.statCard{position:relative}
+.statHead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.statValue{
+  font-size:2rem;
+  font-weight:800;
+  margin-top:8px;
+  color:var(--ink);
+}
+.statusPill{
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:.74rem;
+  font-weight:800;
+  border:1px solid rgba(148,163,184,.55);
+  background:#fff;
+  color:var(--ink);
+}
+.statusPill.good{
+  border-color:#bbf7d0;
+  background:#ecfdf5;
+  color:#047857;
+}
+.statusPill.warn{
+  border-color:rgba(245,158,11,.4);
+  background:var(--accentSoft);
+  color:#7c2d12;
+}
+.trendTag{
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:.74rem;
+  font-weight:900;
+  letter-spacing:.02em;
+  border:1px solid rgba(59,130,246,.3);
+  background:#eff6ff;
+  color:#1d4ed8;
+}
+.trendTag.up{border-color:rgba(16,185,129,.35);background:#ecfdf5;color:#047857}
+.sparkline{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:6px;
+  align-items:end;
+  height:80px;
+  margin-top:16px;
+}
+.sparkline span{
+  display:block;
+  background:linear-gradient(180deg, rgba(15,23,42,.2), rgba(245,158,11,.7));
+  border-radius:999px;
+}
+.metricList{margin-top:10px;display:flex;flex-direction:column;gap:12px}
+.metricRow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid rgba(229,231,235,.9);
+  background:#fff;
+}
+.metricLabel{font-size:.88rem;color:var(--muted);font-weight:700}
+.metricValue{font-weight:900;color:var(--ink)}
+.checkGrid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  margin-top:14px;
+}
+.checkItem{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:12px;
+  border-radius:14px;
+  border:1px solid rgba(229,231,235,.9);
+  background:#fff;
+}
+.checkDot{
+  width:12px;
+  height:12px;
+  border-radius:999px;
+  margin-top:6px;
+  background:#e5e7eb;
+}
+.checkDot.good{background:#10b981}
+.checkDot.warn{background:#f59e0b}
 
 .profileRow{
   display:flex;
@@ -949,6 +1054,7 @@ footer{border-top:1px solid rgba(229,231,235,.9);padding:22px 0 36px;color:var(-
 @media (max-width: 920px){
   .profileRow{flex-direction:column}
   .profileActions{justify-content:flex-start}
+  .dashGrid,.dashSplit,.checkGrid{grid-template-columns:1fr}
 }
 
 @media (max-width: 720px){
