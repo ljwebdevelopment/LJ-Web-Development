@@ -35,6 +35,26 @@ function setLink(id, text, href) {
   el.href = href || "#";
 }
 
+function setStatusPill(id, text, tone) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.textContent = text || "—";
+  el.classList.remove("good", "warn");
+  if (tone === "good" || tone === "warn") {
+    el.classList.add(tone);
+  }
+}
+
+function setTrendTag(id, text, tone) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.textContent = text || "—";
+  el.classList.remove("up");
+  if (tone === "up") {
+    el.classList.add("up");
+  }
+}
+
 function byId(id) {
   return document.getElementById(id);
 }
@@ -198,6 +218,28 @@ async function loadClientData(user) {
 
   // Prefer business name for greeting if available
   if (businessName) setText("helloName", businessName);
+
+  // Optional performance metrics
+  const metrics = safe.metrics || {};
+  if (Object.keys(metrics).length) {
+    if (metrics.healthScore) setText("healthScore", metrics.healthScore);
+    if (metrics.healthStatus) setStatusPill("healthStatus", metrics.healthStatus, metrics.healthTone);
+    if (metrics.vitalsScore) setText("vitalsScore", metrics.vitalsScore);
+    if (metrics.vitalsStatus) setStatusPill("vitalsStatus", metrics.vitalsStatus, metrics.vitalsTone);
+    if (metrics.uptimeValue) setText("uptimeValue", metrics.uptimeValue);
+    if (metrics.uptimeStatus) setStatusPill("uptimeStatus", metrics.uptimeStatus, metrics.uptimeTone);
+    if (metrics.speedValue) setText("speedValue", metrics.speedValue);
+    if (metrics.speedStatus) setStatusPill("speedStatus", metrics.speedStatus, metrics.speedTone);
+    if (metrics.trafficValue) setText("trafficValue", metrics.trafficValue);
+    if (metrics.trafficTrend) setTrendTag("trafficTrend", metrics.trafficTrend, metrics.trafficTone);
+    if (metrics.actionTrend) setTrendTag("actionTrend", metrics.actionTrend, metrics.actionTone);
+    if (metrics.contactActions) setText("contactActions", metrics.contactActions);
+    if (metrics.directionClicks) setText("directionClicks", metrics.directionClicks);
+    if (metrics.formSubmissions) setText("formSubmissions", metrics.formSubmissions);
+    if (metrics.checklistStatus) setStatusPill("checklistStatus", metrics.checklistStatus, metrics.checklistTone);
+    if (metrics.nextAudit) setText("nextAudit", metrics.nextAudit);
+    if (metrics.lastSync) setText("lastSync", metrics.lastSync);
+  }
 }
 
 /* ============================

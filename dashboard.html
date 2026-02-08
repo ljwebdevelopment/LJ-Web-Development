@@ -81,6 +81,155 @@
         <p class="small" id="notes">—</p>
       </div>
 
+      <div class="spacer"></div>
+
+      <!-- PERFORMANCE SNAPSHOT -->
+      <div class="dashSection">
+        <div>
+          <div class="kicker">Performance</div>
+          <h2>Website Health Snapshot</h2>
+          <p class="sectionLead">Live-ready metrics and uptime monitoring built for fast, reliable performance.</p>
+          <p class="small syncText">Last updated: <span id="lastSync">Awaiting sync…</span></p>
+        </div>
+
+        <div class="dashGrid">
+          <div class="card pad statCard">
+            <div class="statHead">
+              <h3>Overall Health</h3>
+              <span class="statusPill good" id="healthStatus">Excellent</span>
+            </div>
+            <div class="statValue" id="healthScore">98%</div>
+            <p class="small">Calculated from speed, uptime, and core web vitals.</p>
+          </div>
+
+          <div class="card pad statCard">
+            <div class="statHead">
+              <h3>Core Web Vitals</h3>
+              <span class="statusPill" id="vitalsStatus">Great</span>
+            </div>
+            <div class="statValue" id="vitalsScore">92</div>
+            <p class="small">LCP, CLS, and INP measured against Google targets.</p>
+          </div>
+
+          <div class="card pad statCard">
+            <div class="statHead">
+              <h3>Uptime</h3>
+              <span class="statusPill good" id="uptimeStatus">Stable</span>
+            </div>
+            <div class="statValue" id="uptimeValue">99.9%</div>
+            <p class="small">Monitored continuously with alerts for any drops.</p>
+          </div>
+
+          <div class="card pad statCard">
+            <div class="statHead">
+              <h3>Speed Index</h3>
+              <span class="statusPill warn" id="speedStatus">Fast</span>
+            </div>
+            <div class="statValue" id="speedValue">1.4s</div>
+            <p class="small">Median page load time (last 30 days).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRAFFIC & ENGAGEMENT -->
+      <div class="dashSection" style="margin-top:18px;">
+        <div class="dashSplit">
+          <div class="card pad">
+            <div class="statHead">
+              <div>
+                <div class="kicker">Traffic</div>
+                <h3>Weekly Visits</h3>
+              </div>
+              <span class="trendTag up" id="trafficTrend">+12%</span>
+            </div>
+            <div class="statValue" id="trafficValue">4,280</div>
+            <p class="small">Unique visitors across your homepage and service pages.</p>
+            <div class="sparkline" aria-hidden="true">
+              <span style="height:35%"></span>
+              <span style="height:60%"></span>
+              <span style="height:42%"></span>
+              <span style="height:75%"></span>
+              <span style="height:58%"></span>
+              <span style="height:82%"></span>
+              <span style="height:64%"></span>
+              <span style="height:90%"></span>
+              <span style="height:70%"></span>
+              <span style="height:88%"></span>
+              <span style="height:76%"></span>
+              <span style="height:95%"></span>
+            </div>
+          </div>
+
+          <div class="card pad">
+            <div class="statHead">
+              <div>
+                <div class="kicker">Engagement</div>
+                <h3>Customer Actions</h3>
+              </div>
+              <span class="trendTag up" id="actionTrend">+8%</span>
+            </div>
+            <div class="metricList">
+              <div class="metricRow">
+                <div class="metricLabel">Calls + emails</div>
+                <div class="metricValue" id="contactActions">128</div>
+              </div>
+              <div class="metricRow">
+                <div class="metricLabel">Directions clicks</div>
+                <div class="metricValue" id="directionClicks">76</div>
+              </div>
+              <div class="metricRow">
+                <div class="metricLabel">Form submissions</div>
+                <div class="metricValue" id="formSubmissions">43</div>
+              </div>
+            </div>
+            <p class="small">Tracked from call-to-action buttons and contact links.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PERFORMANCE CHECKLIST -->
+      <div class="dashSection" style="margin-top:18px;">
+        <div class="card pad">
+          <div class="statHead">
+            <div>
+              <div class="kicker">Maintenance</div>
+              <h3>Performance Checklist</h3>
+            </div>
+            <span class="statusPill good" id="checklistStatus">All systems good</span>
+          </div>
+          <div class="checkGrid">
+            <div class="checkItem">
+              <span class="checkDot good"></span>
+              <div>
+                <strong>Speed optimized</strong>
+                <p class="small">Images compressed, caching tuned, and scripts minimized.</p>
+              </div>
+            </div>
+            <div class="checkItem">
+              <span class="checkDot good"></span>
+              <div>
+                <strong>SEO monitoring</strong>
+                <p class="small">Titles, meta, and structured content reviewed regularly.</p>
+              </div>
+            </div>
+            <div class="checkItem">
+              <span class="checkDot warn"></span>
+              <div>
+                <strong>Next performance pass</strong>
+                <p class="small" id="nextAudit">Scheduled: Next monthly audit</p>
+              </div>
+            </div>
+            <div class="checkItem">
+              <span class="checkDot good"></span>
+              <div>
+                <strong>Uptime alerts</strong>
+                <p class="small">Immediate notifications if downtime is detected.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- SUPPORT FORM -->
       <div id="support" class="card pad" style="margin-top:18px;">
         <div class="supportHead">

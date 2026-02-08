@@ -1,7 +1,5 @@
 const EMAIL_TO = "ljwebdevelopmentok@gmail.com";
 
-/* =========================================================const EMAIL_TO = "ljwebdevelopmentok@gmail.com";
-
 /* =========================================================
    Helpers
 ========================================================= */
@@ -11,6 +9,11 @@ function scrollToId(id){
   const offset = 78;
   const top = el.getBoundingClientRect().top + window.scrollY - offset;
   window.scrollTo({ top, behavior: "smooth" });
+}
+
+function trackEvent(name, params = {}){
+  if(typeof window.gtag !== "function") return;
+  window.gtag("event", name, params);
 }
 
 /* =========================================================
@@ -111,6 +114,7 @@ document.addEventListener("click", function(e){
 
   if(action === "email"){
     e.preventDefault();
+    trackEvent("email_click", { location: "hero_or_contact" });
     const subject = t.getAttribute("data-subject") || "Website Inquiry - Luke Johnson";
     const msg = t.getAttribute("data-message") || "";
     openEmailModal(subject, msg);
@@ -119,6 +123,7 @@ document.addEventListener("click", function(e){
 
   if(action === "plan"){
     e.preventDefault();
+    trackEvent("plan_click", { plan: t.getAttribute("data-plan") || "Support Plan" });
     const plan = t.getAttribute("data-plan") || "Support Plan";
     const subject = `Website Build + ${plan}`;
     const msg = encodeURIComponent(
@@ -130,6 +135,7 @@ document.addEventListener("click", function(e){
 
   if(action === "addon"){
     e.preventDefault();
+    trackEvent("addon_click", { addon: t.getAttribute("data-addon") || "Add-on" });
     const addon = t.getAttribute("data-addon") || "Add-on";
     const subject = `Add-on Request - ${addon}`;
     const msg = encodeURIComponent(
@@ -141,6 +147,7 @@ document.addEventListener("click", function(e){
 
   if(action === "build"){
     e.preventDefault();
+    trackEvent("build_click");
     scrollToId("contact");
     const subject = "Website Build + Support Plan";
     const msg = encodeURIComponent(
@@ -155,6 +162,7 @@ document.addEventListener("click", function(e){
    Quick Support
 ========================================================= */
 document.getElementById("supportBtn")?.addEventListener("click", ()=>{
+  trackEvent("support_click");
   const subject = "Quick Support - Luke Johnson";
   const msg = encodeURIComponent(
     "Hey Luke,\n\nI need quick support on my website.\n\nBusiness name:\nWhat’s going on:\nUrgency (today/this week/whenever):\n\nThanks!"
@@ -167,6 +175,7 @@ document.getElementById("supportBtn")?.addEventListener("click", ()=>{
 ========================================================= */
 document.getElementById("quoteForm")?.addEventListener("submit", (e)=>{
   e.preventDefault();
+  trackEvent("form_submit");
 
   const name = document.getElementById("name")?.value?.trim() || "";
   const biz = document.getElementById("biz")?.value?.trim() || "";
@@ -179,6 +188,10 @@ document.getElementById("quoteForm")?.addEventListener("submit", (e)=>{
   );
 
   openEmailModal(subject, body);
+});
+
+document.getElementById("mapDirections")?.addEventListener("click", ()=>{
+  trackEvent("direction_click");
 });
 
 /* =========================================================

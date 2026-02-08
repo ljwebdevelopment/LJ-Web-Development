@@ -6,6 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LJ Web Development</title>
   <meta name="description" content="Luke Johnson — websites + ongoing support for small businesses in Tahlequah and beyond." />
+  <meta name="theme-color" content="#0b1220" />
+  <meta property="og:title" content="LJ Web Development" />
+  <meta property="og:description" content="Clean, mobile-first websites with ongoing support for small businesses." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="LJ%20Web%20Development%20Logo.png" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZE1P90K8N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-NZE1P90K8N");
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +30,7 @@
 </head>
 
 <body>
+<a class="skipLink" href="#top">Skip to content</a>
 <header>
   <div class="head">
     <div class="brand" role="button" tabindex="0" data-action="scroll" data-target="top" aria-label="Go to top">
@@ -32,6 +47,7 @@
 
     <nav id="nav">
       <button class="navLink" type="button" data-action="scroll" data-target="services">Services</button>
+      <button class="navLink" type="button" data-action="scroll" data-target="process">Process</button>
       <button class="navLink" type="button" data-action="scroll" data-target="pricing">Pricing</button>
       <button class="navLink" type="button" data-action="scroll" data-target="addons">Add-ons</button>
       <button class="navLink" type="button" data-action="scroll" data-target="portfolio">Portfolio</button>
@@ -59,7 +75,7 @@
         </h1>
 
         <p class="heroText">
-          Clean, mobile-first sites for small businesses — plus ongoing support so your site doesn’t get outdated.
+          Clean, mobile-first sites for small businesses — plus ongoing support so your site stays polished, fast, and current.
         </p>
 
         <div class="badges">
@@ -109,6 +125,30 @@
     </div>
   </section>
 
+  <!-- TRUST -->
+  <section class="section trustBand">
+    <div class="container">
+      <div class="kicker">Why it works</div>
+      <h2>Focused on real results</h2>
+      <p class="sectionLead">Simple, reliable websites with quick turnaround and a single point of contact.</p>
+
+      <div class="grid3 trustGrid">
+        <div class="card pad">
+          <h3>Launch-ready builds</h3>
+          <p class="small">Clear services, contact buttons, and a layout that helps customers take action.</p>
+        </div>
+        <div class="card pad">
+          <h3>Ongoing care</h3>
+          <p class="small">Support plans keep updates, edits, and fixes handled without needing a new quote each time.</p>
+        </div>
+        <div class="card pad">
+          <h3>Local-first mindset</h3>
+          <p class="small">Based in Tahlequah with experience building for small businesses and organizations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICES -->
   <section id="services" class="section softBand">
     <div class="container">
@@ -138,6 +178,33 @@
           <p class="small">Updates, fixes, promos, and improvements—handled.</p>
           <div class="spacer"></div>
           <button class="btn btnOutline" type="button" data-action="scroll" data-target="pricing">Compare plans</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="section">
+    <div class="container">
+      <div class="kicker">Process</div>
+      <h2>A simple, fast workflow</h2>
+      <p class="sectionLead">You get a clean launch with ongoing support that keeps your site updated.</p>
+
+      <div class="steps">
+        <div class="card pad">
+          <div class="stepNum">01</div>
+          <h3>Plan the content</h3>
+          <p class="small">We collect your services, photos, contact info, and goals for the site.</p>
+        </div>
+        <div class="card pad">
+          <div class="stepNum">02</div>
+          <h3>Design + build</h3>
+          <p class="small">I build a mobile-first layout with fast load times and clear calls to action.</p>
+        </div>
+        <div class="card pad">
+          <div class="stepNum">03</div>
+          <h3>Launch + support</h3>
+          <p class="small">After launch, updates and changes are handled through a support plan.</p>
         </div>
       </div>
     </div>
@@ -304,7 +371,6 @@
           <a class="portfolioLink" href="https://thestraightedge514.com" target="_blank" rel="noopener" aria-label="View The Straight Edge Barbershop website">
             <div class="portfolioMedia">
               <img class="portfolioFavicon" src="https://thestraightedge514.com/favicon.png" alt="The Straight Edge Barbershop favicon" />
-              <img class="portfolioPreview" src="images/thestraightedge-preview.png" alt="The Straight Edge Barbershop preview" />
             </div>
 
             <div class="portfolioMeta">
@@ -334,8 +400,6 @@
           <a class="portfolioLink" href="https://coleforok86.com" target="_blank" rel="noopener" aria-label="View Cole for OK 86 website">
             <div class="portfolioMedia">
               <img class="portfolioFavicon" src="https://coleforok86.com/favicon.png" alt="Cole for OK 86 favicon" />
-              <!-- Optional: add a screenshot here later -->
-              <img class="portfolioPreview" src="images/coleforok86-preview.png" alt="Cole for OK 86 preview" />
             </div>
 
             <div class="portfolioMeta">
@@ -375,7 +439,7 @@
         <p class="sectionLead">Local feel, clean work, and support that keeps the site updated.</p>
 
         <div class="row">
-          <a class="btn btnOutline" href="https://www.google.com/maps?q=Tahlequah+OK" target="_blank" rel="noopener">Open in Google Maps</a>
+          <a class="btn btnOutline" id="mapDirections" href="https://www.google.com/maps?q=Tahlequah+OK" target="_blank" rel="noopener">Open in Google Maps</a>
           <button class="btn btnSoft" type="button" data-action="scroll" data-target="contact">Message me</button>
         </div>
       </div>
@@ -410,14 +474,13 @@
           <div class="row">
             <button class="btn btnPrimary" type="button" data-action="email"
               data-subject="Website Inquiry - Luke Johnson"
-              data-message="Hey Luke,%0D%0A%0D%0AI would like to talk to you about building a website with a support plan.%0D%0A%0D%0ABusiness name:%0D%0A
-Best contact:%0D%0AWhat I need:%0D%0A%0D%0AThanks!">
+              data-message="Hey Luke,%0D%0A%0D%0AI would like to talk to you about building a website with a support plan.%0D%0A%0D%0ABusiness name:%0D%0ABest contact:%0D%0AWhat I need:%0D%0A%0D%0AThanks!">
               Open Email
             </button>
             <button class="btn btnOutline" type="button" data-action="scroll" data-target="pricing">Compare plans</button>
           </div>
 
-          <p class="small">Email: <strong>ljwebdevelopmentok@gmail.com</strong></p>
+          <p class="small">Email: <strong><a href="mailto:ljwebdevelopmentok@gmail.com">ljwebdevelopmentok@gmail.com</a></strong></p>
         </div>
       </div>
 
@@ -426,16 +489,51 @@ Best contact:%0D%0AWhat I need:%0D%0A%0D%0AThanks!">
         <p class="small">This generates the message, then opens the email options.</p>
 
         <form id="quoteForm" class="form">
-          <input id="name" type="text" placeholder="Your name" required>
-          <input id="biz" type="text" placeholder="Business name">
-          <select id="need">
+          <div>
+            <label class="fieldLabel" for="name">Your name</label>
+            <input id="name" type="text" placeholder="Your name" required>
+          </div>
+          <div>
+            <label class="fieldLabel" for="biz">Business name</label>
+            <input id="biz" type="text" placeholder="Business name">
+          </div>
+          <div>
+            <label class="fieldLabel" for="need">Package</label>
+            <select id="need">
             <option>Website Build + Basic Support ($45/mo)</option>
             <option>Website Build + Standard Support ($75/mo)</option>
             <option>Website Build + Full Service Support ($145/mo)</option>
-          </select>
-          <textarea id="details" rows="4" placeholder="Anything specific you want on the site? (hours, services, photos, deadline)"></textarea>
+            </select>
+          </div>
+          <div>
+            <label class="fieldLabel" for="details">Project details</label>
+            <textarea id="details" rows="4" placeholder="Hours, services, photos, deadline, or any specific goals."></textarea>
+          </div>
           <button class="btn btnPrimary" type="submit">Open email options</button>
         </form>
+        <p class="small" style="margin-top:10px;">I typically respond within 1 business day.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section softBand">
+    <div class="container">
+      <div class="kicker">FAQ</div>
+      <h2>Questions, answered</h2>
+      <div class="faqGrid">
+        <div class="card pad">
+          <h3>How long does a build take?</h3>
+          <p class="small">Most small-business sites launch within 1–2 weeks once content is ready.</p>
+        </div>
+        <div class="card pad">
+          <h3>Can I request edits after launch?</h3>
+          <p class="small">Yes. Support plans cover ongoing updates, fixes, and improvements.</p>
+        </div>
+        <div class="card pad">
+          <h3>What do you need from me?</h3>
+          <p class="small">Your services, contact info, and any photos or branding you want included.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -445,6 +543,7 @@ Best contact:%0D%0AWhat I need:%0D%0A%0D%0AThanks!">
       <div>© <span id="year"></span> Luke Johnson · Web Development</div>
       <div class="footLinks">
         <button class="footBtn" type="button" data-action="scroll" data-target="services">Services</button>
+        <button class="footBtn" type="button" data-action="scroll" data-target="process">Process</button>
         <button class="footBtn" type="button" data-action="scroll" data-target="pricing">Pricing</button>
         <button class="footBtn" type="button" data-action="scroll" data-target="addons">Add-ons</button>
         <button class="footBtn" type="button" data-action="scroll" data-target="portfolio">Portfolio</button>
