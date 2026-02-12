@@ -26,20 +26,6 @@ body{
 img{max-width:100%;display:block}
 .container{max-width:var(--max);margin:0 auto;padding:0 18px}
 .section{padding:72px 0}
-.skipLink{
-  position:absolute;
-  left:16px;
-  top:-40px;
-  background:#111827;
-  color:#fff;
-  padding:10px 14px;
-  border-radius:999px;
-  font-weight:700;
-  text-decoration:none;
-  z-index:1000;
-  transition:top .16s ease;
-}
-.skipLink:focus{top:14px}
 .kicker{
   font-size:.78rem;
   letter-spacing:.18em;
